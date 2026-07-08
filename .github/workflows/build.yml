@@ -5,10 +5,10 @@ env:
 
   # ── 内核源码 ──
   KERNEL_NAME: chopin_kvm
-  KERNEL_REPO: https://github.com/Hwhmi/mt6891a13.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'chopin_kvm_oc' || 'chopin_kvm' }}
+  KERNEL_REPO: https://github.com/Hwhmi/mt6891a12.git
+  KERNEL_BRANCH: ${{ inputs.overclock && 'chopin_kvm_oc' || 'S' }}
   KERNEL_DEVICE: chopin
-  DEFCONFIG_NAME: chopin_defconfig
+  DEFCONFIG_NAME: chopin_user_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
@@ -258,7 +258,7 @@ jobs:
             rm -rf "./drivers/kernelsu"
           fi
           
-          curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
+          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
           echo -e "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
           echo -e "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
           echo -e "CONFIG_KSU_MANUAL_HOOK_AUTO_INPUT_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
