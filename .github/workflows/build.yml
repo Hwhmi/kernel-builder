@@ -4,7 +4,7 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: chopin_kvm
+  KERNEL_NAME: S
   KERNEL_REPO: https://github.com/Hwhmi/mt6891a12.git
   KERNEL_BRANCH: ${{ inputs.overclock && 'chopin_kvm_oc' || 'S' }}
   KERNEL_DEVICE: chopin
