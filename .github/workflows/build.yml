@@ -4,11 +4,11 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: mt6891a12
-  KERNEL_REPO: https://github.com/Hwhmi/mt6891a12.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'chopin_kvm_oc' || 'S' }}
-  KERNEL_DEVICE: chopin
-  DEFCONFIG_NAME: chopin_user_defconfig
+  KERNEL_NAME: android16
+  KERNEL_REPO: https://github.com/Hwhmi/psyche_xiaomi_sm8250.git
+  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'android16' }}
+  KERNEL_DEVICE: psyche
+  DEFCONFIG_NAME: psyche_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
@@ -29,7 +29,7 @@ env:
   FAKE_COMPILER: ${{ inputs.fake_compiler }}
 
   # ── ccache ──
-  CCACHE_KEY: ccache-chopin-4.14-a16
+  CCACHE_KEY: ccache-psyche
 
 on:
   workflow_dispatch:
@@ -258,7 +258,7 @@ jobs:
             rm -rf "./drivers/kernelsu"
           fi
           
-          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
+          curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
           echo -e "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
           echo -e "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
           echo -e "CONFIG_KSU_MANUAL_HOOK_AUTO_INPUT_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
