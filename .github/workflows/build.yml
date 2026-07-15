@@ -4,11 +4,11 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: android16
-  KERNEL_REPO: https://github.com/Hwhmi/psyche_xiaomi_sm8250.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'android16' }}
-  KERNEL_DEVICE: psyche
-  DEFCONFIG_NAME: psyche_defconfig
+  KERNEL_NAME: mt6891a13
+  KERNEL_REPO: https://github.com/Hwhmi/mt6891a13.git
+  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'chopin_kvm' }}
+  KERNEL_DEVICE: chopin
+  DEFCONFIG_NAME: chopin_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
