@@ -5,7 +5,7 @@ env:
 
   # ── 内核源码 ──
   KERNEL_NAME: mt6891a13
-  KERNEL_REPO: https://github.com/Hwhmi/mt6891a13.git
+  KERNEL_REPO: https://github.com/Hwhmi/kernel_chopina13.git
   KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'chopin_16' }}
   KERNEL_DEVICE: chopin
   DEFCONFIG_NAME: chopin_defconfig
