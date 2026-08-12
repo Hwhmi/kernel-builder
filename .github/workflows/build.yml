@@ -5,10 +5,10 @@ env:
 
   # ── 内核源码 ──
   KERNEL_NAME: HwhmiReSukiAK3
-  KERNEL_REPO: https://github.com/Hwhmi/kernel_mt6891chopin.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'chopin_16' }}
-  KERNEL_DEVICE: chopin
-  DEFCONFIG_NAME: chopin_defconfig
+  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_sm8250.git
+  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'android16-new' }}
+  KERNEL_DEVICE: psyche
+  DEFCONFIG_NAME: psyche_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
