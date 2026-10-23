@@ -543,7 +543,10 @@ jobs:
             Image dtbs
 
       - name: 打包 dtbo
-        run: python3 pack_dtbo.py ${{ env.OUT_DIR }}/arch/arm64/boot/dts/mediatek/mt6891-chopin.dtb dtbo.img
+        run: |
+          curl -sL -o pack_dtbo.py \
+            https://raw.githubusercontent.com/Hwhmi/kernel-builder/next-a16/pack_dtbo.py
+          python3 pack_dtbo.py ${{ env.OUT_DIR }}/arch/arm64/boot/dts/mediatek/mt6891-chopin.dtb dtbo.img
 
       - name: 上传 dtbo
         uses: actions/upload-artifact@v4
