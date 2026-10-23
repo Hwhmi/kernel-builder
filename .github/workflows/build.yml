@@ -543,11 +543,7 @@ jobs:
             Image dtbs
 
       - name: 打包 dtbo
-        run: |
-          curl -sL -o mkdtboimg.py \
-            https://raw.githubusercontent.com/osm0sis/mkbootimg/master/mkdtboimg.py
-          python3 mkdtboimg.py create dtbo.img --page_size=4096 \
-            ${{ env.OUT_DIR }}/arch/arm64/boot/dts/mediatek/mt6891-chopin.dtb
+        run: python3 pack_dtbo.py ${{ env.OUT_DIR }}/arch/arm64/boot/dts/mediatek/mt6891-chopin.dtb dtbo.img
 
       - name: 上传 dtbo
         uses: actions/upload-artifact@v4
