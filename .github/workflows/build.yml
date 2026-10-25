@@ -6,7 +6,7 @@ env:
   # ── 内核源码 ──
   KERNEL_NAME: chopin5.10
   KERNEL_REPO: https://github.com/Hwhmi/kernel-mtk-6893.git
-  KERNEL_BRANCH: mt6891-5.10
+  KERNEL_BRANCH: mt6893-5.10
   KERNEL_DEVICE: chopin
   DEFCONFIG_NAME: gki_defconfig
 
