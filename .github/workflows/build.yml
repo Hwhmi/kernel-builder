@@ -4,9 +4,9 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: chopin6.6
-  KERNEL_REPO: https://github.com/Hwhmi/android_kernel_oneplus_mt6991.git
-  KERNEL_BRANCH: oneplus/mt6991_v_15.0.2_ace5_ultra
+  KERNEL_NAME: chopin5.10
+  KERNEL_REPO: https://github.com/Hwhmi/kernel-mtk-6893.git
+  KERNEL_BRANCH: mt6891-5.10
   KERNEL_DEVICE: chopin
   DEFCONFIG_NAME: gki_defconfig
 
@@ -541,19 +541,6 @@ jobs:
             CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
             LD=ld.lld \
             Image dtbs
-
-      - name: 打包 dtbo
-        run: |
-          curl -sL -o pack_dtbo.py \
-            https://raw.githubusercontent.com/Hwhmi/kernel-builder/next-a16/pack_dtbo.py
-          python3 pack_dtbo.py ${{ env.OUT_DIR }}/arch/arm64/boot/dts/mediatek/mt6891-chopin.dtb dtbo.img
-
-      - name: 上传 dtbo
-        uses: actions/upload-artifact@v4
-        with:
-          name: dtbo
-          path: dtbo.img
-
 
       - name: 输出 ccache 统计
         if: inputs.ccache_enabled && always()
