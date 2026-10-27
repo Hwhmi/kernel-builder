@@ -4,11 +4,11 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: HwhmiReSukiAK3
-  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_sm8250.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'android16-new' }}
-  KERNEL_DEVICE: psyche
-  DEFCONFIG_NAME: psyche_defconfig
+  KERNEL_NAME: 4.19
+  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_mt6893-4.19.git
+  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'A17' }}
+  KERNEL_DEVICE: chopin
+  DEFCONFIG_NAME: chopin_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
@@ -29,7 +29,7 @@ env:
   FAKE_COMPILER: ${{ inputs.fake_compiler }}
 
   # ── ccache ──
-  CCACHE_KEY: ccache-psyche
+  CCACHE_KEY: ccache-chopin
 
 on:
   workflow_dispatch:
