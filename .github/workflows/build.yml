@@ -4,11 +4,11 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: chopin5.10
-  KERNEL_REPO: https://github.com/Hwhmi/kernel-mtk-6893.git
-  KERNEL_BRANCH: mt6893-5.10
+  KERNEL_NAME: BakaSU
+  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_mt6891chopin.git
+  KERNEL_BRANCH: chopin_16
   KERNEL_DEVICE: chopin
-  DEFCONFIG_NAME: gki_defconfig
+  DEFCONFIG_NAME: chopin_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
