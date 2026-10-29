@@ -504,7 +504,7 @@ jobs:
             READELF=llvm-readelf \
             STRIP=llvm-strip \
             OBJSIZE=llvm-size \
-            Image dtbs
+            Image.gz-dtb dtbs
 
       - name: 输出 ccache 统计
         if: inputs.ccache_enabled && always()
@@ -533,11 +533,11 @@ jobs:
           echo "image_name=${IMAGE_NAME}" >> $GITHUB_OUTPUT
           echo "dtb_name=${DTB_NAME}" >> $GITHUB_OUTPUT
 
-          if [[ ! -f "${BOOT_DIR}/Image" ]]; then
-            echo "::error::未找到内核镜像文件 (Image)，构建失败"
+          if [[ ! -f "${BOOT_DIR}/Image.gz-dtb" ]]; then
+            echo "::error::未找到内核镜像文件 (Image.gz-dtb)，构建失败"
             exit 1
           fi
-          echo "内核镜像校验通过: ${BOOT_DIR}/Image"
+          echo "内核镜像校验通过: ${BOOT_DIR}/Image.gz-dtb"
 
           # 寻找编译出的所有 dtb 文件并合并为单文件 dtb
           find "${{ env.OUT_DIR }}/arch/${{ env.ARCH }}/boot/dts/" -name "*.dtb" -type f -exec cat {} + > "${BOOT_DIR}/dtb"
@@ -559,12 +559,13 @@ jobs:
           AK3_NAME="${{ env.KERNEL_DEVICE }}-${{ env.KERNEL_NAME }}${SUFFIX_STR}_${BUILDDATE}"
 
           # 复制内核与设备树镜像到 AnyKernel3
-          if [ -f "${BOOT_DIR}/Image" ]; then
-            cp -f "${BOOT_DIR}/Image" ./AnyKernel3/
+          rm -f ./AnyKernel3/Image ./AnyKernel3/Image.gz ./AnyKernel3/Image.gz-dtb
+          if [ -f "${BOOT_DIR}/Image.gz-dtb" ]; then
+            cp -f "${BOOT_DIR}/Image.gz-dtb" ./AnyKernel3/
+          else
+            cat "${BOOT_DIR}/Image.gz" "${BOOT_DIR}/dtb" > ./AnyKernel3/Image.gz-dtb
           fi
-          if [ -f "${BOOT_DIR}/Image.gz" ]; then
-            cp -f "${BOOT_DIR}/Image.gz" ./AnyKernel3/
-          fi
+
           if [ -f "${BOOT_DIR}/dtb" ]; then
             cp -f "${BOOT_DIR}/dtb" ./AnyKernel3/
           fi
@@ -593,7 +594,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.prepare_image.outputs.image_name }}
-          path: ${{ env.OUT_DIR }}/arch/${{ env.ARCH }}/boot/Image
+          path: ${{ env.OUT_DIR }}/arch/${{ env.ARCH }}/boot/Image.gz-dtb
           if-no-files-found: error
           retention-days: 7
 
