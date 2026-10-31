@@ -5,8 +5,8 @@ env:
 
   # ── 内核源码 ──
   KERNEL_NAME: KSU
-  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_mt6893-4.14.git
-  KERNEL_BRANCH: 4.14.186
+  KERNEL_REPO: https://github.com/Hwhmi/android_kernel_chopin-4.14.git
+  KERNEL_BRANCH: A13
   KERNEL_DEVICE: chopin
   DEFCONFIG_NAME: chopin_user_defconfig
 
