@@ -540,6 +540,7 @@ jobs:
             CROSS_COMPILE_ARM32=arm-linux-androideabi- \
             CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
             LD=ld.lld \
+            KCFLAGS="-Wno-error=incompatible-pointer-types-discards-qualifiers" \
             Image dtbs
 
       - name: 输出 ccache 统计
