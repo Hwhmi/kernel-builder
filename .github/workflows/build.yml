@@ -4,11 +4,11 @@ env:
   TZ: Asia/Shanghai
 
   # ── 内核源码 ──
-  KERNEL_NAME: 4.19
-  KERNEL_REPO: https://github.com/Hwhmi/kernel_xiaomi_mt6893-4.19.git
-  KERNEL_BRANCH: ${{ inputs.overclock && 'android16' || 'a17' }}
+  KERNEL_NAME: 6.6
+  KERNEL_REPO: https://github.com/Hwhmi/android_kernel_oneplus_mt6991.git
+  KERNEL_BRANCH: ${{ inputs.overclock && '6.6.89' || '6.6.89' }}
   KERNEL_DEVICE: chopin
-  DEFCONFIG_NAME: chopin_defconfig
+  DEFCONFIG_NAME: gki_defconfig
 
   # ── 工具链 ──
   # 实际工具链（AOSP Clang 12.0.5 r416183b，纯 LLVM 构建）
